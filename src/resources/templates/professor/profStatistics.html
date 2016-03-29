@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Studying system</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../scripts/professorMain.js"></script>
+</head>
+<body>
+
+<div id="includedContent"></div>
+
+<div class="container">
+    <table class="table" id="statistics">
+        <thead>
+        <tr>
+            <th>Subject code</th>
+            <th>Semester</th>
+            <th>Quantity of students</th>
+            <th>Average grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info">
+            <td>IDU 0021</td>
+            <td>Automn 2015</td>
+            <td>300</td>
+            <td>3.2</td>
+        </tr>
+        <tr class="info">
+            <td>IDU 0021</td>
+            <td>Spring 2015</td>
+            <td>250</td>
+            <td>3.7</td>
+        </tr>
+        <tr class="info">
+            <td>IDU 0021</td>
+            <td>Automn 2015</td>
+            <td>300</td>
+            <td>3.2</td>
+        </tr>
+        <tr class="info">
+            <td>IDU 0022</td>
+            <td>Automn 2014</td>
+            <td>100</td>
+            <td>4.5</td>
+        </tr>
+        <tr class="info">
+            <td>IDU 0022</td>
+            <td>Spring 2015</td>
+            <td>130</td>
+            <td>4.1</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="bg-success">
+        <label for="addButton">Add new data</label>
+        <button id="addButton" onclick="showInputForm()">+</button>
+    </div>
+    <div class="container" id="addNewLine">
+        <div class="form-group">
+            <label for="subjectCode">Subject code:</label>
+            <input type="text" class="form-control" id="subjectCode">
+        </div>
+        <div class="form-group">
+            <label for="semester">Semester:</label>
+            <input type="text" class="form-control" id="semester" maxlength="12">
+        </div>
+        <div class="form-group">
+            <label for="studQuant">Quantity of students:</label>
+            <input type="number" class="form-control" id="studQuant" max="999" min="1">
+        </div>
+        <div class="form-group">
+            <label for="avg">Average grade:</label>
+            <input type="number" class="form-control" id="avg" max="5" min="0">
+        </div>
+        <button type="button" id="button" onclick="validate()" class="btn btn-default">Submit</button>
+    </div>
+</div>
+
+</body>
+</html>
