@@ -10,6 +10,10 @@ function showInputForm(){
     document.getElementById("addNewLine").style.visibility='visible';
 }
 
+function modifyMark(id){
+    document.getElementById(id).removeAttribute("readonly");
+}
+
 function validate(){
     var avg = document.getElementById("avg").value;
     var quant = document.getElementById("studQuant").value;
