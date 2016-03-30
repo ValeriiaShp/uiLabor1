@@ -6,6 +6,12 @@ var studentsArray = '{ "students" : [' +
     '{ "name":"Anna Smith", "studentCode":"135478", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
     '{ "name":"Peter Jones", "studentCode":"137964", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
     ']}';
+var jsonSize = 2;
+var data =  [
+    {value: "John Doe"},
+    {value: "Anna Smith"},
+    {value: "Peter Jones"},
+];
 
 $(document).ready(function () {
     $(function () {
@@ -14,6 +20,10 @@ $(document).ready(function () {
     });
 });
 
+function showInputForm() {
+    document.getElementById("addNewLine").style.visibility = 'visible';
+}
+
 
 function loadContent(content) {
     if (content === 'logout') {
@@ -21,30 +31,20 @@ function loadContent(content) {
     }
     //disable others
     document.getElementById('professorNotifications').style.display = 'none';
-    document.getElementById('profEnterMarks').style.display = 'none';
     document.getElementById('professorMarks').style.display = 'none';
     document.getElementById('profStatistics').style.display = 'none';
     document.getElementById('professorSearch').style.display = 'none';
     //enable one
-    var div = document.getElementById(content);
-    div.style.display = 'block';
+    document.getElementById(content).style.display = 'block';
     if (content === "professorNotifications") {
         professorNotifications();
-    } else if (content === "profEnterMarks") {
-        profEnterMarks();
     } else if (content === "professorMarks") {
         professorMarks();
-    } else if (content === "profStatistics") {
-        professorStatistics();
     }
 
 }
 
 function professorNotifications() {
-
-}
-
-function profEnterMarks() {
 
 }
 
@@ -54,25 +54,48 @@ function professorMarks() {
     table.tBodies[0].remove();
     table.appendChild(document.createElement('tbody'));
     var tableBody = table.getElementsByTagName('tbody')[0];
-    for (var i = 0; i < Object.keys(studentsArray).length - 1; i++) {
-        obj = JSON.parse(studentsArray);
+    for (var i = 0; i <= jsonSize; i++) {
+       var obj = JSON.parse(studentsArray);
        var row = tableBody.insertRow(0);
         row.className = "info";
         var studentName = row.insertCell(0);
-        var subjectCode = row.insertCell(1);
-        var grade = row.insertCell(2);
+        var studentCode = row.insertCell(1);
+        var subjectCode = row.insertCell(2);
+        var grade = row.insertCell(3);
         studentName.innerHTML = obj.students[i].name;
         subjectCode.innerHTML = obj.students[i].subjectCode;
+        studentCode.innerHTML = obj.students[i].studentCode;
         grade.innerHTML = obj.students[i].grade;
+
+
     }
 
 }
-function professorStatistics() {
-}
 
 
-function showInputForm() {
-    document.getElementById("addNewLine").style.visibility = 'visible';
+
+function detailedInfo(){
+    var table = document.getElementById("detailedInfo");
+    table.tBodies[0].remove();
+    table.appendChild(document.createElement('tbody'));
+    var tBody = table.getElementsByTagName('tbody')[0];
+    var name = document.getElementById("sdName").value;
+    var obj = JSON.parse(studentsArray);
+    for(var i = 0; i <= jsonSize; i++){
+        if(name === obj.students[i].name) {
+            var row = tBody.insertRow(0);
+            row.className = "info";
+            var studentName = row.insertCell(0);
+            var studentCode = row.insertCell(1);
+            var subjectCode = row.insertCell(2);
+            var grade = row.insertCell(3);
+            studentName.innerHTML = obj.students[i].name;
+            subjectCode.innerHTML = obj.students[i].subjectCode;
+            studentCode.innerHTML = obj.students[i].studentCode;
+            grade.innerHTML = obj.students[i].grade;
+        }
+    }
+    document.getElementById("detailedInfo").style.display = "block";
 }
 
 function modifyMark(id) {
@@ -87,29 +110,33 @@ function modifyMark(id) {
 
 function validate() {
     var studentName = document.getElementById("studentName").value;
+    var studentCode = document.getElementById("studentCode").value;
     var subjectCOde = document.getElementById("subjectCode").value;
     var grade = document.getElementById("grade").value;
-    if (grade > 5 || grade < 0) {
+    if (grade > 5 || grade < 0 || studentCode.length < 6) {
         alert("FAIL!");
     } else {
         var obj = JSON.parse(studentsArray);
-        obj['students'].push({"name":studentName,"email":null, "subjectCode":subjectCOde, "grade":grade});
+        obj['students'].push({"name":studentName,"studentCode":studentCode, "email":null, "subjectCode":subjectCOde, "grade":grade});
         studentsArray = JSON.stringify(obj);
         document.getElementById("studentName").value = "";
+        document.getElementById("studentCode").value = "";
         document.getElementById("subjectCode").value = "";
         document.getElementById("grade").value = "";
+        jsonSize += 1;
+        data.push(studentName);
         professorMarks();
     }
 }
-var data = [
-    {value: "Teet Tee", label: "Teet Tee"},
-    {value: "Anna Puu", label: "Anna Puu"},
-    {value: "Siim Orav", label: "Siim Orav"},
-    {value: "Kadri Voi", label: "Kadri Voi"},
-    {value: "Mait Kass", label: "Mait Kass"}
-];
+
 $(function () {
     $("#sdName").autocomplete({
+        source: data
+    });
+});
+
+$(function () {
+    $("#studentName").autocomplete({
         source: data
     });
 });

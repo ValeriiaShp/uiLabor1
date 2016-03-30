@@ -4,6 +4,7 @@
     <list default="true" id="898bd6c1-0676-46af-bebe-e465d21bb559" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/scripts/professorMain.js" afterPath="$PROJECT_DIR$/src/resources/scripts/professorMain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/templates/professor/professorHeader.html" afterPath="$PROJECT_DIR$/src/resources/templates/professor/professorHeader.html" />
     </list>
     <ignored path="Labor1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="professorMain.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/scripts/professorMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7718631">
-              <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.7916667">
+              <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -39,18 +40,19 @@
       <file leaf-file-name="professorHeader.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/templates/professor/professorHeader.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.029411">
-              <caret line="54" column="45" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="45" />
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="52" column="71" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="71" />
               <folding>
                 <element signature="n#head#0;n#!!top" expanded="false" />
-                <element signature="n#nav#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#table#0;n#div#2;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#table#0;n#div#3;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#3;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#table#0;n#div#3;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -825,7 +827,7 @@
       <workItem from="1459327153774" duration="28000" />
       <workItem from="1459346230060" duration="4653000" />
       <workItem from="1459358480407" duration="1089000" />
-      <workItem from="1459359604057" duration="10046000" />
+      <workItem from="1459359604057" duration="13837000" />
     </task>
     <task id="LOCAL-00001" summary="shit">
       <created>1459350370614</created>
@@ -851,11 +853,23 @@
       <option name="project" value="LOCAL" />
       <updated>1459368548821</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="normal table creation =_=">
+      <created>1459369679998</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1459369679998</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changes to JSON">
+      <created>1459369902321</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1459369902321</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38607000" />
+    <option name="totallyTimeSpent" value="42398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -867,7 +881,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6014151" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34551886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -927,7 +941,9 @@
     <MESSAGE value="shitty refactor =(" />
     <MESSAGE value="table creation from JSON" />
     <MESSAGE value="change first and last name to name" />
-    <option name="LAST_COMMIT_MESSAGE" value="change first and last name to name" />
+    <MESSAGE value="normal table creation =_=" />
+    <MESSAGE value="changes to JSON" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes to JSON" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1190,26 +1206,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/templates/professor/professorHeader.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.029411">
-          <caret line="54" column="45" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="45" />
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="52" column="71" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="71" />
           <folding>
             <element signature="n#head#0;n#!!top" expanded="false" />
-            <element signature="n#nav#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#2;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#table#0;n#div#3;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#table#0;n#div#3;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/scripts/professorMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7718631">
-          <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.7916667">
+          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
           <folding />
         </state>
       </provider>
