@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Studying system</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../scripts/professorMain.js"></script>
+</head>
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -7,14 +15,16 @@
                 <a class="navbar-brand" href="../student/studentHome.html">Studying system</a>
             </div>
             <ul class="nav navbar-nav" id="navigationBar">
-                <li class="active"><a href="../student/studentNotifications.html">Notifications <span class="badge">2</span></a></li>
-                <li><a href="profEnterMarks.html">Enter marks</a></li>
-                <li><a href="professorMarks.html">Marks</a></li>
-                <li><a href="profStatistics.html">Statistics</a></li>
-                <li><a href="professorSearch.html">Search</a></li>
-                <li><a href="../login.html">Logout</a></li>
+                <li class="active"><button onclick="loadContent('professorNotifications')">Notifications <span class="badge">2</span></button></li>
+                <li><button onclick="loadContent('profEnterMarks')">Enter marks</button></li>
+                <li><button onclick="loadContent('professorMarks')">Marks</button></li>
+                <li><button onclick="loadContent('profStatistics')">Statistics</button></li>
+                <li><button onclick="loadContent('professorSearch')">Search</button></li>
+                <li><button onclick="loadContent('logout')">Logout</button></li>
             </ul>
         </div>
     </nav>
+
+    <div id="includedContent"></div>
 </div>
 </html>

@@ -8,7 +8,7 @@ function validate() {
     if (email.value === "student@ttu.ee" && password.value === "pass123") {
         window.location = "student/studentHome.html";
     } else if (email.value === "professor@ttu.ee" && password.value === "pass123") {
-        window.location = "professor/professorHome.html";
+        window.location = "professor/professorHeader.html";
     } else {
         document.getElementById("labelError").style.display = 'block';
     }

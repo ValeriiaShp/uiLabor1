@@ -1,17 +1,31 @@
+var readonlyProperty = true;
+
 $(document).ready(function () {
     $(function(){
-        $("#includedContent").load("professorHeader.html");
         document.getElementById("addNewLine").style.visibility='hidden';
 
     });
 });
+
+function loadContent(content){
+    if(content === 'logout'){
+        window.location = "../login.html";
+    }
+    $("#includedContent").load(content + ".html");
+}
 
 function showInputForm(){
     document.getElementById("addNewLine").style.visibility='visible';
 }
 
 function modifyMark(id){
-    document.getElementById(id).removeAttribute("readonly");
+    if(readonlyProperty == true){
+        document.getElementById(id).removeAttribute("readonly");
+        readonlyProperty = false;
+    }else{
+        document.getElementById(id).readOnly = "true";
+        readonlyProperty = true;
+    }
 }
 
 function validate(){
@@ -34,6 +48,10 @@ function validate(){
         document.getElementById("addNewLine").style.visibility='hidden';
     }
 
+    function autocompleteFunc(value){
+        var currentName = document.getElementById("stName").value;
+        alert(value);
+    }
     $(function() {
         var availableTags = [
             "Teet tee",

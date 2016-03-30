@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="../../scripts/studentMain.js"></script>
-    <title>Studying system</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="../../scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../../scripts/professorMain.js"></script>
-</head>
 <body>
-<div id="includedContent"></div>
-<div class="container">
+<div class="container" id="professorSearch">
     <label for="stName">Student name: </label>
-    <input id="stName">
+    <input onchange="autocompleteFunc(this.value)" id="stName">
     <!--AUTOCOMPLETE does not work-->
 </div>
 </body>
