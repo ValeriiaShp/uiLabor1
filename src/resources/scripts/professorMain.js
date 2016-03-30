@@ -1,39 +1,48 @@
 var readonlyProperty = true;
 
 $(document).ready(function () {
-    $(function(){
-        document.getElementById("addNewLine").style.visibility='hidden';
+    $(function () {
+        document.getElementById("addNewLine").style.visibility = 'hidden';
 
     });
 });
 
-function loadContent(content){
-    if(content === 'logout'){
+
+function loadContent(content) {
+    if (content === 'logout') {
         window.location = "../login.html";
     }
-    $("#includedContent").load(content + ".html");
+    //disable others
+    document.getElementById('professorHome').style.display = 'none';
+    document.getElementById('professorNotifications').style.display = 'none';
+    document.getElementById('profEnterMarks').style.display = 'none';
+    document.getElementById('professorMarks').style.display = 'none';
+    document.getElementById('profStatistics').style.display = 'none';
+    document.getElementById('professorSearch').style.display = 'none';
+    //enable one
+    document.getElementById(content).style.display = 'block';
 }
 
-function showInputForm(){
-    document.getElementById("addNewLine").style.visibility='visible';
+function showInputForm() {
+    document.getElementById("addNewLine").style.visibility = 'visible';
 }
 
-function modifyMark(id){
-    if(readonlyProperty == true){
+function modifyMark(id) {
+    if (readonlyProperty == true) {
         document.getElementById(id).removeAttribute("readonly");
         readonlyProperty = false;
-    }else{
+    } else {
         document.getElementById(id).readOnly = "true";
         readonlyProperty = true;
     }
 }
 
-function validate(){
+function validate() {
     var avg = document.getElementById("avg").value;
     var quant = document.getElementById("studQuant").value;
-    if(avg > 5 || avg < 0 || quant <= 0 || quant > 999){
-        alert ("FAIL!");
-    }else{
+    if (avg > 5 || avg < 0 || quant <= 0 || quant > 999) {
+        alert("FAIL!");
+    } else {
         var table = document.getElementById("statistics");
         var row = table.insertRow(1);
         row.className = "info";
@@ -45,23 +54,20 @@ function validate(){
         semester.innerHTML = document.getElementById("semester").value;
         quantity.innerHTML = quant;
         averGrade.innerHTML = avg;
-        document.getElementById("addNewLine").style.visibility='hidden';
+        document.getElementById("addNewLine").style.visibility = 'hidden';
     }
-
-    function autocompleteFunc(value){
-        var currentName = document.getElementById("stName").value;
-        alert(value);
-    }
-    $(function() {
-        var availableTags = [
-            "Teet tee",
-            "Anna Ravi",
-            "Mait Punane",
-            "Mari Oja",
-            "Liis Leht"
-        ];
-        $( "#stName" ).autocomplete({
-            source: availableTags
-        });
-    });
 }
+var data = [
+    { value: "Teet Tee", label: "Teet Tee" },
+    { value: "Anna Puu", label: "Anna Puu" },
+    { value: "Siim Orav", label: "Siim Orav" },
+    { value: "Kadri Voi", label: "Kadri Voi" },
+    { value: "Mait Kass", label: "Mait Kass" }
+];
+$(function() {
+    $("#sdName").autocomplete({
+        source: data
+    });
+});
+
+

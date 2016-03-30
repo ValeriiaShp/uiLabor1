@@ -1,30 +1,168 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Studying system</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/ui-darkness/jquery-ui.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../../scripts/professorMain.js"></script>
 </head>
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../student/studentHome.html">Studying system</a>
+                <a class="navbar-brand" onclick="loadContent('professorHome')">Studying system</a>
             </div>
             <ul class="nav navbar-nav" id="navigationBar">
-                <li class="active"><button onclick="loadContent('professorNotifications')">Notifications <span class="badge">2</span></button></li>
-                <li><button onclick="loadContent('profEnterMarks')">Enter marks</button></li>
-                <li><button onclick="loadContent('professorMarks')">Marks</button></li>
-                <li><button onclick="loadContent('profStatistics')">Statistics</button></li>
-                <li><button onclick="loadContent('professorSearch')">Search</button></li>
-                <li><button onclick="loadContent('logout')">Logout</button></li>
+                <li class="active"><a onclick="loadContent('professorNotifications')">Notifications <span class="badge">2</span></a>
+                </li>
+                <li><a onclick="loadContent('profEnterMarks')">Enter marks</a></li>
+                <li><a onclick="loadContent('professorMarks')">Marks</a></li>
+                <li><a onclick="loadContent('profStatistics')">Statistics</a></li>
+                <li><a onclick="loadContent('professorSearch')">Search</a></li>
+                <li><a onclick="loadContent('logout')">Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="includedContent"></div>
+
+    <div id="professorHome" style="display: none">
+        <p>Home </p>
+
+    </div>
+
+    <div id="profEnterMarks" style="display: none">
+
+        <p>Enter marks </p>
+    </div>
+    <div id="professorMarks" style="display: none">
+        <form role="form">
+
+            <table class="table" id="statistics">
+                <thead>
+                <tr>
+                    <th>Student name</th>
+                    <th>Subject code</th>
+                    <th>Grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="info">
+                    <td>Teet Tee</td>
+                    <td>IDU0021</td>
+                    <td><input type="number" min="1" max="5" value="3" id="teet" readonly/></td>
+                    <td>
+                        <input type="button" value="+" onclick="modifyMark('teet')"/>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+    <div id="professorNotifications" style="display: none">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="info">
+                <td>Teet Puu <span class="badge">1</span></td>
+                <td>teet.puu@example.com</td>
+            </tr>
+            <tr class="success">
+                <td>Teet Tee</td>
+                <td>teet.tee@example.com</td>
+            </tr>
+            <tr class="info">
+                <td>Teet Teepuu <span class="badge">1</span></td>
+                <td>teet.teepuu@example.com</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div id="profStatistics" style="display: none">
+        <table class="table" id="statistics">
+            <thead>
+            <tr>
+                <th>Subject code</th>
+                <th>Semester</th>
+                <th>Quantity of students</th>
+                <th>Average grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="info">
+                <td>IDU 0021</td>
+                <td>Automn 2015</td>
+                <td>300</td>
+                <td>3.2</td>
+            </tr>
+            <tr class="info">
+                <td>IDU 0021</td>
+                <td>Spring 2015</td>
+                <td>250</td>
+                <td>3.7</td>
+            </tr>
+            <tr class="info">
+                <td>IDU 0021</td>
+                <td>Automn 2015</td>
+                <td>300</td>
+                <td>3.2</td>
+            </tr>
+            <tr class="info">
+                <td>IDU 0022</td>
+                <td>Automn 2014</td>
+                <td>100</td>
+                <td>4.5</td>
+            </tr>
+            <tr class="info">
+                <td>IDU 0022</td>
+                <td>Spring 2015</td>
+                <td>130</td>
+                <td>4.1</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="bg-success">
+            <label for="addButton">Add new data</label>
+            <button id="addButton" onclick="showInputForm()">+</button>
+        </div>
+        <div class="container" id="addNewLine">
+            <div class="form-group">
+                <label for="subjectCode">Subject code:</label>
+                <input type="text" class="form-control" id="subjectCode">
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <input type="text" class="form-control" id="semester" maxlength="12">
+            </div>
+            <div class="form-group">
+                <label for="studQuant">Quantity of students:</label>
+                <input type="number" class="form-control" id="studQuant" max="999" min="1">
+            </div>
+            <div class="form-group">
+                <label for="avg">Average grade:</label>
+                <input type="number" class="form-control" id="avg" max="5" min="0">
+            </div>
+            <button type="button" id="button" onclick="validate()" class="btn btn-default">Submit</button>
+        </div>
+
+    </div>
+
+    <div id="professorSearch" style="display: none">
+
+        <input id="sdName" type="text" placeholder="Student name"/>
+    </div>
 </div>
 </html>
