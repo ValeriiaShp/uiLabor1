@@ -2,9 +2,9 @@ var readonlyProperty = true;
 
 
 var studentsArray = '{ "students" : [' +
-    '{ "name":"John Doe", "email":"john.doe@ttu.ee", "subjectCode":"IDU0021", "grade":"3"},' +
-    '{ "name":"Anna Smith", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
-    '{ "name":"Peter Jones", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
+    '{ "name":"John Doe", "studentCode":"124578", "email":"john.doe@ttu.ee", "subjectCode":"IDU0021", "grade":"3"},' +
+    '{ "name":"Anna Smith", "studentCode":"135478", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
+    '{ "name":"Peter Jones", "studentCode":"137964", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
     ']}';
 
 $(document).ready(function () {
@@ -49,7 +49,7 @@ function profEnterMarks() {
 }
 
 function professorMarks() {
-    document.getElementById("addNewLine").style.display="none";
+    document.getElementById("addNewLine").style.visibility = 'hidden';
     var table = document.getElementById("marksProf");
     table.tBodies[0].remove();
     table.appendChild(document.createElement('tbody'));
