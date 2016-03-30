@@ -34,7 +34,6 @@
                 <thead>
                 <tr>
                     <th>Student name</th>
-                    <th>Student code</th>
                     <th>Subject code</th>
                     <th>Grade</th>
                 </tr>
@@ -49,16 +48,20 @@
         </div>
         <div class="container" id="addNewLine">
             <div class="form-group">
-                <label for="studentName">Student name:</label>
-                <input type="text" class="form-control" id="studentName"  maxlength="100">
-            </div>
-            <div class="form-group">
-                <label for="studentCode">Student code:</label>
-                <input type="text" class="form-control" id="studentCode" min="6" max="6">
+                <label for="studentName">Student name - code:</label>
+                <select id="studentName"class="form-control">
+                    <option value="John Doe - 124578"> John Doe - 124578 </option>
+                    <option value="Anna Smith - 135478"> Anna Smith - 135478 </option>
+                    <option value="Peter Jones - 137964"> Peter Jones - 137964 </option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="subjectCode">Subject code:</label>
-                <input type="text" class="form-control" id="subjectCode" maxlength="8">
+                <select id="subjectCode" class="form-control">
+                    <option value="IDU0021"> IDU0021 </option>
+                    <option value="IDU0022"> IDU0022 </option>
+                    <option value="IDU0033"> IDU0033 </option>
+                    </select>
             </div>
             <div class="form-group">
                 <label for="grade">Grade:</label>
@@ -146,7 +149,7 @@
         <input id="sdName" type="text" placeholder="Student name"/>
         <button id="showDetailedData" onclick="detailedInfo()">Detailed info</button>
 
-        <table class="table" class="col-md-12" id="detailedInfo" style="display: none">
+        <table class="table" class="form-control" id="detailedInfo" style="display: none">
             <thead>
             <tr>
                 <th>Student name</th>

@@ -8,9 +8,9 @@ var studentsArray = '{ "students" : [' +
     ']}';
 var jsonSize = 2;
 var data = [
-    {value: "John Doe"},
-    {value: "Anna Smith"},
-    {value: "Peter Jones"},
+    {value: "John Doe - 124578"},
+    {value: "Anna Smith - 135478"},
+    {value: "Peter Jones - 137964"},
 ];
 
 $(document).ready(function () {
@@ -59,12 +59,10 @@ function professorMarks() {
         var row = tableBody.insertRow(0);
         row.className = "info";
         var studentName = row.insertCell(0);
-        var studentCode = row.insertCell(1);
-        var subjectCode = row.insertCell(2);
-        var grade = row.insertCell(3);
-        studentName.innerHTML = obj.students[i].name;
+        var subjectCode = row.insertCell(1);
+        var grade = row.insertCell(2);
+        studentName.innerHTML = obj.students[i].name + " - " + obj.students[i].studentCode ;
         subjectCode.innerHTML = obj.students[i].subjectCode;
-        studentCode.innerHTML = obj.students[i].studentCode;
         grade.innerHTML = obj.students[i].grade;
 
 
@@ -79,6 +77,8 @@ function detailedInfo() {
     table.appendChild(document.createElement('tbody'));
     var tBody = table.getElementsByTagName('tbody')[0];
     var name = document.getElementById("sdName").value;
+    var nameCode = name.split("-");
+    name = nameCode[0].substring(0, nameCode[0].length-1);
     var obj = JSON.parse(studentsArray);
     for (var i = 0; i <= jsonSize; i++) {
         if (name === obj.students[i].name) {
@@ -109,10 +109,12 @@ function modifyMark(id) {
 
 function validate() {
     var studentName = document.getElementById("studentName").value;
-    var studentCode = document.getElementById("studentCode").value;
+    var nameCode = studentName.split("-");
+    studentName = nameCode[0].substring(0, nameCode[0].length-1);
+    var studentCode = nameCode[1].substring(1, nameCode[1].lenght);
     var subjectCOde = document.getElementById("subjectCode").value;
     var grade = document.getElementById("grade").value;
-    if (grade > 5 || grade < 0 || studentCode.length < 6) {
+    if (grade > 5 || grade < 0 ) {
         alert("FAIL!");
     } else {
         var obj = JSON.parse(studentsArray);
@@ -124,12 +126,10 @@ function validate() {
             "grade": grade
         });
         studentsArray = JSON.stringify(obj);
+        jsonSize += 1;
         document.getElementById("studentName").value = "";
-        document.getElementById("studentCode").value = "";
         document.getElementById("subjectCode").value = "";
         document.getElementById("grade").value = "";
-        jsonSize += 1;
-        data.push(studentName);
         professorMarks();
     }
 }
@@ -140,23 +140,5 @@ $(function () {
     });
 });
 
-$(function () {
-
-    $("#studentName").autocomplete({
-        source: data,
-        minLength: 1,
-        change: function (event, ui) {
-            var inputValue = document.getElementById('studentName').value;
-            var obj = JSON.parse(studentsArray);
-            for(var i = 0; i <= jsonSize; i++){
-                if(inputValue === obj.students[i].name){
-                    document.getElementById('studentCode').value = obj.students[i].studentCode;
-                }
-            }
-        }
-    });
-
-
-});
 
 
