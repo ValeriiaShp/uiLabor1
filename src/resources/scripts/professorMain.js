@@ -7,7 +7,7 @@ var studentsArray = '{ "students" : [' +
     '{ "name":"Peter Jones", "studentCode":"137964", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
     ']}';
 var jsonSize = 2;
-var data =  [
+var data = [
     {value: "John Doe"},
     {value: "Anna Smith"},
     {value: "Peter Jones"},
@@ -55,8 +55,8 @@ function professorMarks() {
     table.appendChild(document.createElement('tbody'));
     var tableBody = table.getElementsByTagName('tbody')[0];
     for (var i = 0; i <= jsonSize; i++) {
-       var obj = JSON.parse(studentsArray);
-       var row = tableBody.insertRow(0);
+        var obj = JSON.parse(studentsArray);
+        var row = tableBody.insertRow(0);
         row.className = "info";
         var studentName = row.insertCell(0);
         var studentCode = row.insertCell(1);
@@ -73,16 +73,15 @@ function professorMarks() {
 }
 
 
-
-function detailedInfo(){
+function detailedInfo() {
     var table = document.getElementById("detailedInfo");
     table.tBodies[0].remove();
     table.appendChild(document.createElement('tbody'));
     var tBody = table.getElementsByTagName('tbody')[0];
     var name = document.getElementById("sdName").value;
     var obj = JSON.parse(studentsArray);
-    for(var i = 0; i <= jsonSize; i++){
-        if(name === obj.students[i].name) {
+    for (var i = 0; i <= jsonSize; i++) {
+        if (name === obj.students[i].name) {
             var row = tBody.insertRow(0);
             row.className = "info";
             var studentName = row.insertCell(0);
@@ -117,7 +116,13 @@ function validate() {
         alert("FAIL!");
     } else {
         var obj = JSON.parse(studentsArray);
-        obj['students'].push({"name":studentName,"studentCode":studentCode, "email":null, "subjectCode":subjectCOde, "grade":grade});
+        obj['students'].push({
+            "name": studentName,
+            "studentCode": studentCode,
+            "email": null,
+            "subjectCode": subjectCOde,
+            "grade": grade
+        });
         studentsArray = JSON.stringify(obj);
         document.getElementById("studentName").value = "";
         document.getElementById("studentCode").value = "";
@@ -136,9 +141,22 @@ $(function () {
 });
 
 $(function () {
+
     $("#studentName").autocomplete({
-        source: data
+        source: data,
+        minLength: 1,
+        change: function (event, ui) {
+            var inputValue = document.getElementById('studentName').value;
+            var obj = JSON.parse(studentsArray);
+            for(var i = 0; i <= jsonSize; i++){
+                if(inputValue === obj.students[i].name){
+                    document.getElementById('studentCode').value = obj.students[i].studentCode;
+                }
+            }
+        }
     });
+
+
 });
 
 
