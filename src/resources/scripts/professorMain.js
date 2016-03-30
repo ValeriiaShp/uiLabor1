@@ -49,41 +49,25 @@ function profEnterMarks() {
 }
 
 function professorMarks() {
+    document.getElementById("addNewLine").style.display="none";
     var table = document.getElementById("marksProf");
     table.tBodies[0].remove();
+    table.appendChild(document.createElement('tbody'));
+    var tableBody = table.getElementsByTagName('tbody')[0];
     for (var i = 0; i < Object.keys(studentsArray).length - 1; i++) {
-        changedPage = false;
         obj = JSON.parse(studentsArray);
-        var row = table.insertRow(1);
+       var row = tableBody.insertRow(0);
         row.className = "info";
         var studentName = row.insertCell(0);
         var subjectCode = row.insertCell(1);
-
-
         var grade = row.insertCell(2);
-        studentName.innerHTML = obj.students[i].firstName + " " + obj.students[i].lastName;
+        studentName.innerHTML = obj.students[i].name;
         subjectCode.innerHTML = obj.students[i].subjectCode;
         grade.innerHTML = obj.students[i].grade;
     }
 
 }
 function professorStatistics() {
-    var table = document.getElementById("marksProf");
-    table.tBodies[0].remove();
-    for (var i = 0; i < Object.keys(studentsArray).length - 1; i++) {
-        obj = JSON.parse(studentsArray);
-        var row = table.insertRow(1);
-        row.className = "info";
-        var studentName = row.insertCell(0);
-        var subjectCode = row.insertCell(1);
-
-
-        var grade = row.insertCell(2);
-        studentName.innerHTML = obj.students[i].firstName + " " + obj.students[i].lastName;
-        subjectCode.innerHTML = obj.students[i].subjectCode;
-        grade.innerHTML = obj.students[i].grade;
-    }
-
 }
 
 
@@ -102,31 +86,19 @@ function modifyMark(id) {
 }
 
 function validate() {
-    var studentFirstName = document.getElementById("grade").value;
-    var studenLastName = document.getElementById("grade").value;
-
+    var studentName = document.getElementById("studentName").value;
+    var subjectCOde = document.getElementById("subjectCode").value;
     var grade = document.getElementById("grade").value;
     if (grade > 5 || grade < 0) {
         alert("FAIL!");
     } else {
         var obj = JSON.parse(studentsArray);
-        obj['students'].push({"teamId":"4","status":"pending"});
-        jsonStr = JSON.stringify(obj);
-
-
-        /*
-        var table = document.getElementById("marksProf");
-        var row = table.insertRow(1);
-        row.className = "info";
-        var subjCode = row.insertCell(0);
-        var semester = row.insertCell(1);
-        var quantity = row.insertCell(2);
-        var averGrade = row.insertCell(3);
-        subjCode.innerHTML = document.getElementById("subjectCode").value;
-        semester.innerHTML = document.getElementById("semester").value;
-        quantity.innerHTML = quant;
-        averGrade.innerHTML = grade;*/
-        document.getElementById("addNewLine").style.visibility = 'hidden';
+        obj['students'].push({"name":studentName,"email":null, "subjectCode":subjectCOde, "grade":grade});
+        studentsArray = JSON.stringify(obj);
+        document.getElementById("studentName").value = "";
+        document.getElementById("subjectCode").value = "";
+        document.getElementById("grade").value = "";
+        professorMarks();
     }
 }
 var data = [
