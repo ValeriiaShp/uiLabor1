@@ -48,6 +48,25 @@
                 </tbody>
             </table>
         </form>
+        <div class="bg-success">
+            <label for="addButton">Add new data</label>
+            <button id="addButton" onclick="showInputForm()">+</button>
+        </div>
+        <div class="container" id="addNewLine">
+            <div class="form-group">
+                <label for="studentName">Student name:</label>
+                <input type="text" class="form-control" id="studentName" maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="subjectCode">Subject code:</label>
+                <input type="text" class="form-control" id="subjectCode" maxlength="8">
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="number" class="form-control" id="grade" max="5" min="1">
+            </div>
+            <button type="button" id="button" onclick="validate()" class="btn btn-default">Submit</button>
+        </div>
 
     </div>
 
@@ -120,29 +139,6 @@
             </tr>
             </tbody>
         </table>
-        <div class="bg-success">
-            <label for="addButton">Add new data</label>
-            <button id="addButton" onclick="showInputForm()">+</button>
-        </div>
-        <div class="container" id="addNewLine">
-            <div class="form-group">
-                <label for="subjectCode">Subject code:</label>
-                <input type="text" class="form-control" id="subjectCode">
-            </div>
-            <div class="form-group">
-                <label for="semester">Semester:</label>
-                <input type="text" class="form-control" id="semester" maxlength="12">
-            </div>
-            <div class="form-group">
-                <label for="studQuant">Quantity of students:</label>
-                <input type="number" class="form-control" id="studQuant" max="999" min="1">
-            </div>
-            <div class="form-group">
-                <label for="avg">Average grade:</label>
-                <input type="number" class="form-control" id="avg" max="5" min="0">
-            </div>
-            <button type="button" id="button" onclick="validate()" class="btn btn-default">Submit</button>
-        </div>
 
     </div>
 

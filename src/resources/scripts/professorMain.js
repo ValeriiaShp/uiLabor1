@@ -2,9 +2,9 @@ var readonlyProperty = true;
 
 
 var studentsArray = '{ "students" : [' +
-    '{ "firstName":"John" , "lastName":"Doe", "email":"john.doe@ttu.ee", "subjectCode":"IDU0021", "grade":"3"},' +
-    '{ "firstName":"Anna" , "lastName":"Smith", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
-    '{ "firstName":"Peter" , "lastName":"Jones", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
+    '{ "name":"John Doe", "email":"john.doe@ttu.ee", "subjectCode":"IDU0021", "grade":"3"},' +
+    '{ "name":"Anna Smith", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
+    '{ "name":"Peter Jones", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
     ']}';
 
 $(document).ready(function () {
@@ -71,7 +71,6 @@ function professorStatistics() {
     var table = document.getElementById("marksProf");
     table.tBodies[0].remove();
     for (var i = 0; i < Object.keys(studentsArray).length - 1; i++) {
-        changedPage = false;
         obj = JSON.parse(studentsArray);
         var row = table.insertRow(1);
         row.className = "info";
@@ -103,12 +102,20 @@ function modifyMark(id) {
 }
 
 function validate() {
-    var avg = document.getElementById("avg").value;
-    var quant = document.getElementById("studQuant").value;
-    if (avg > 5 || avg < 0 || quant <= 0 || quant > 999) {
+    var studentFirstName = document.getElementById("grade").value;
+    var studenLastName = document.getElementById("grade").value;
+
+    var grade = document.getElementById("grade").value;
+    if (grade > 5 || grade < 0) {
         alert("FAIL!");
     } else {
-        var table = document.getElementById("statistics");
+        var obj = JSON.parse(studentsArray);
+        obj['students'].push({"teamId":"4","status":"pending"});
+        jsonStr = JSON.stringify(obj);
+
+
+        /*
+        var table = document.getElementById("marksProf");
         var row = table.insertRow(1);
         row.className = "info";
         var subjCode = row.insertCell(0);
@@ -118,7 +125,7 @@ function validate() {
         subjCode.innerHTML = document.getElementById("subjectCode").value;
         semester.innerHTML = document.getElementById("semester").value;
         quantity.innerHTML = quant;
-        averGrade.innerHTML = avg;
+        averGrade.innerHTML = grade;*/
         document.getElementById("addNewLine").style.visibility = 'hidden';
     }
 }
