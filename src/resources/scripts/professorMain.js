@@ -22,6 +22,42 @@ $(document).ready(function () {
 
 function showInputForm() {
     document.getElementById("addNewLine").style.visibility = 'visible';
+    createSelectName();
+    createSelectCode()
+
+
+}
+
+function createSelectCode() {
+    var divCodeName = document.getElementById("subjectCode");
+    divCodeName.removeChild(divCodeName.childNodes[0]);
+    var selectListCode = document.createElement("select");
+    selectListCode.id = "selectCodeName";
+    selectListCode.className = "form-control";
+    divCodeName.appendChild(selectListCode);
+    for (var i = 0; i <= jsonSize; i++) {
+        var obj = JSON.parse(studentsArray);
+        var optionCode = document.createElement("option");
+        optionCode.text = obj.students[i].subjectCode;
+        optionCode.value = optionCode.text;
+        selectListCode.add(optionCode);
+    }
+}
+
+function createSelectName() {
+    var divStudName = document.getElementById("studentName");
+    divStudName.removeChild(divStudName.childNodes[0]);
+    var selectList = document.createElement("select");
+    selectList.id = "selectStudName";
+    selectList.className = "form-control";
+    divStudName.appendChild(selectList);
+    for (var i = 0; i <= jsonSize; i++) {
+        var obj = JSON.parse(studentsArray);
+        var option = document.createElement("option");
+        option.text = obj.students[i].name + " - " + obj.students[i].studentCode;
+        option.value = option.text;
+        selectList.add(option);
+    }
 }
 
 
@@ -61,7 +97,7 @@ function professorMarks() {
         var studentName = row.insertCell(0);
         var subjectCode = row.insertCell(1);
         var grade = row.insertCell(2);
-        studentName.innerHTML = obj.students[i].name + " - " + obj.students[i].studentCode ;
+        studentName.innerHTML = obj.students[i].name + " - " + obj.students[i].studentCode;
         subjectCode.innerHTML = obj.students[i].subjectCode;
         grade.innerHTML = obj.students[i].grade;
 
@@ -78,7 +114,7 @@ function detailedInfo() {
     var tBody = table.getElementsByTagName('tbody')[0];
     var name = document.getElementById("sdName").value;
     var nameCode = name.split("-");
-    name = nameCode[0].substring(0, nameCode[0].length-1);
+    name = nameCode[0].substring(0, nameCode[0].length - 1);
     var obj = JSON.parse(studentsArray);
     for (var i = 0; i <= jsonSize; i++) {
         if (name === obj.students[i].name) {
@@ -108,15 +144,17 @@ function modifyMark(id) {
 }
 
 function validate() {
-    var studentName = document.getElementById("studentName").value;
+    var studentName = document.getElementById("selectStudName").value;
     var nameCode = studentName.split("-");
-    studentName = nameCode[0].substring(0, nameCode[0].length-1);
-    var studentCode = nameCode[1].substring(1, nameCode[1].lenght);
-    var subjectCOde = document.getElementById("subjectCode").value;
+    studentName = nameCode[0].substring(0, nameCode[0].length - 1);
+    var studentCode = nameCode[1].substring(1, nameCode[1].length);
+    var subjectCOde = document.getElementById("selectCodeName").value;
     var grade = document.getElementById("grade").value;
-    if (grade > 5 || grade < 0 ) {
-        alert("FAIL!");
-    } else {
+    if (grade > 5 || grade < 0) {
+        document.getElementById("errorLabel").style.display="block";
+    }/*else if(){
+
+    }*/ else {
         var obj = JSON.parse(studentsArray);
         obj['students'].push({
             "name": studentName,
@@ -130,6 +168,7 @@ function validate() {
         document.getElementById("studentName").value = "";
         document.getElementById("subjectCode").value = "";
         document.getElementById("grade").value = "";
+        document.getElementById("errorLabel").style.display="none";
         professorMarks();
     }
 }

@@ -46,22 +46,17 @@
             <label for="addButton">Add new data</label>
             <button id="addButton" onclick="showInputForm()">+</button>
         </div>
+        <label id="errorLabel" style="color: red; display: none"> Error! Grade must be between 1 and 5!</label>
         <div class="container" id="addNewLine">
             <div class="form-group">
                 <label for="studentName">Student name - code:</label>
-                <select id="studentName"class="form-control">
-                    <option value="John Doe - 124578"> John Doe - 124578 </option>
-                    <option value="Anna Smith - 135478"> Anna Smith - 135478 </option>
-                    <option value="Peter Jones - 137964"> Peter Jones - 137964 </option>
-                </select>
+                <div id="studentName">
+                </div>
             </div>
             <div class="form-group">
                 <label for="subjectCode">Subject code:</label>
-                <select id="subjectCode" class="form-control">
-                    <option value="IDU0021"> IDU0021 </option>
-                    <option value="IDU0022"> IDU0022 </option>
-                    <option value="IDU0033"> IDU0033 </option>
-                    </select>
+                <div id="subjectCode">
+                </div>
             </div>
             <div class="form-group">
                 <label for="grade">Grade:</label>
@@ -144,7 +139,7 @@
 
     </div>
 
-    <div id="professorSearch"  style="display: none">
+    <div id="professorSearch" style="display: none">
 
         <input id="sdName" type="text" placeholder="Student name"/>
         <button id="showDetailedData" onclick="detailedInfo()">Detailed info</button>
