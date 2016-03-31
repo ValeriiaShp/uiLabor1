@@ -3,8 +3,8 @@ var readonlyProperty = true;
 
 var studentsArray = '{ "students" : [' +
     '{ "name":"John Doe", "studentCode":"124578", "email":"john.doe@ttu.ee", "subjectCode":"IDU0021", "grade":"3"},' +
-    '{ "name":"Anna Smith", "studentCode":"135478", "email":"anna.smith@ttu.ee","subjectCode":"IDU0021", "grade":"5" },' +
-    '{ "name":"Peter Jones", "studentCode":"137964", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0021", "grade":"2"} ' +
+    '{ "name":"Anna Smith", "studentCode":"135478", "email":"anna.smith@ttu.ee","subjectCode":"IDU0022", "grade":"5" },' +
+    '{ "name":"Peter Jones", "studentCode":"137964", "email":"peter.jones@ttu.ee", "subjectCode":"IDU0033", "grade":"2"} ' +
     ']}';
 var jsonSize = 2;
 var data = [
@@ -84,9 +84,9 @@ function loadContent(content) {
     } else if (content === "professorMarks") {
         document.getElementById('profMarks').className = "active";
         professorMarks();
-    }else if(content === "profStatistics"){
+    } else if (content === "profStatistics") {
         document.getElementById('profStat').className = "active";
-    }else if(content === "professorSearch"){
+    } else if (content === "professorSearch") {
         document.getElementById('profSearch').className = "active";
     }
 
@@ -162,27 +162,38 @@ function validate() {
     var studentCode = nameCode[1].substring(1, nameCode[1].length);
     var subjectCOde = document.getElementById("selectCodeName").value;
     var grade = document.getElementById("grade").value;
-    if (grade > 5 || grade < 0) {
-        document.getElementById("errorLabel").style.display="block";
-    }/*else if(){
 
-    }*/ else {
-        var obj = JSON.parse(studentsArray);
-        obj['students'].push({
-            "name": studentName,
-            "studentCode": studentCode,
-            "email": null,
-            "subjectCode": subjectCOde,
-            "grade": grade
-        });
-        studentsArray = JSON.stringify(obj);
-        jsonSize += 1;
-        document.getElementById("studentName").value = "";
-        document.getElementById("subjectCode").value = "";
-        document.getElementById("grade").value = "";
-        document.getElementById("errorLabel").style.display="none";
-        professorMarks();
+    if (grade > 5 || grade < 0) {
+        document.getElementById("errorLabel").style.display = "block";
+        return;
     }
+
+    var obj = JSON.parse(studentsArray);
+    for (var i = 0; i <= jsonSize; i++) {
+        if (studentName === obj.students[i].name && subjectCOde === obj.students[i].subjectCode
+            && studentCode === obj.students[i].studentCode) {
+            document.getElementById("errorMark").style.display = "block";
+            return;
+        }
+    }
+
+    obj['students'].push({
+        "name": studentName,
+        "studentCode": studentCode,
+        "email": null,
+        "subjectCode": subjectCOde,
+        "grade": grade
+    });
+    studentsArray = JSON.stringify(obj);
+    jsonSize += 1;
+    document.getElementById("studentName").value = "";
+    document.getElementById("subjectCode").value = "";
+    document.getElementById("grade").value = "";
+    document.getElementById("errorLabel").style.display = "none";
+    document.getElementById("errorMark").style.display = "none";
+
+    professorMarks();
+
 }
 
 $(function () {
