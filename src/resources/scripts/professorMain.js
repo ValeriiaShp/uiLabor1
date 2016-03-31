@@ -16,7 +16,7 @@ var data = [
 $(document).ready(function () {
     $(function () {
         document.getElementById("addNewLine").style.visibility = 'hidden';
-
+        loadContent('professorNotifications')
     });
 });
 
