@@ -166,7 +166,7 @@ function initNotifications() {
         contentCell.colSpan = 2;
         contentCell.innerHTML = notificationsJSON.notifications[i].content;
 
-        //row1.onclick(alert(notificationsJSON.notifications[i].content));
+        //row1.onclick(function() {alert(notificationsJSON.notifications[i].content)});
 
         contentCell.style.display = 'none';
         if (notificationsJSON.notifications[i].unread ) {
@@ -253,7 +253,7 @@ function initSubmissions() {
         var brr = document.createElement('br');
         ppp.appendChild(brr);
         var span2 = document.createElement('span');
-        span2.innerHTML = "<b>" + submissionsJSON.submissions[i].task + ": </b>";
+        span2.innerHTML = "<b>Task: " + submissionsJSON.submissions[i].task + " </b> URL: ";
         ppp.appendChild(span2);
 
         var idd = "submission" + i;
