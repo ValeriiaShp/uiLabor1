@@ -70,12 +70,24 @@ function loadContent(content) {
     document.getElementById('professorMarks').style.display = 'none';
     document.getElementById('profStatistics').style.display = 'none';
     document.getElementById('professorSearch').style.display = 'none';
+
+    document.getElementById('profNot').className = "";
+    document.getElementById('profMarks').className = "";
+    document.getElementById('profStat').className = "";
+    document.getElementById('profSearch').className = "";
+
     //enable one
     document.getElementById(content).style.display = 'block';
     if (content === "professorNotifications") {
+        document.getElementById("profNot").className = "active";
         professorNotifications();
     } else if (content === "professorMarks") {
+        document.getElementById('profMarks').className = "active";
         professorMarks();
+    }else if(content === "profStatistics"){
+        document.getElementById('profStat').className = "active";
+    }else if(content === "professorSearch"){
+        document.getElementById('profSearch').className = "active";
     }
 
 }
